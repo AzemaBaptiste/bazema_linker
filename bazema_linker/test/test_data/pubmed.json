@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Title drug2 json",
+    "date": "14/01/2000",
+    "journal": "journal drugs json"
+  },
+  {
+    "id": "2",
+    "title": "Title drug1 json.",
+    "date": "01/01/2020",
+    "journal": "journal drugs 1 json"
+  },
+]

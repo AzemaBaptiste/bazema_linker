@@ -1,0 +1,3 @@
+include requirements.txt
+include bazema_linker/utils
+exclude bazema_linker/tests

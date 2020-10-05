@@ -1,0 +1,11 @@
+# Python specific
+venv
+.coverage
+**/__pycache__/
+.pytest_cache
+build
+*.egg-info
+dist
+
+# IDE specific
+.idea
