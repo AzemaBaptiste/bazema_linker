@@ -8,38 +8,28 @@ Application building relations between drugs,
 The output is a JSON file.
 
 ## Design
-
        +-------------------------+
-       |                         |
        | input folder            |
        |   + drugs.csv           |
        |   | pubmed.csv          |
        |   | pubmed.json         |
        |   + clinical_trials.csv |
-       |                         |
        +-------------------------+
-    
-                   +
-                   |           move valid   +------------------+
-                   v           files        |                  |
-                                   +------> |  archive folder  |
-           +----------------+      |        |                  |
-           |                | +----+        +------------------+
-           | bazema_linker  |
-           | python job     |
-           |                | +----+
-           +----------------+      |        +------------------+
-                                   |        |                  |
-                   +               +----->  |  errors folder   |
-                   |          move invalid  |                  |
-                   v          files         +------------------+
-    
+                   +         move valid
+                   |         files    +------------------+
+                   v           +----> |  archive folder  |
+          +--------+-------+   |      +------------------+
+          |                |+--+
+          | bazema_linker  |
+          | python job     |     move invalid
+          |                |±--+ files
+          +----------------+   |      +------------------+
+                   +           +----> |  errors folder   |
+                   |                  +------------------+
+                   v
     +-----------------------------+
-    |                             |
     |  output folder              |
-    |   + result_2020_10-06.json  |
-    |                             |
-    |                             |
+    |   + result_2020_10_06.json  |
     +-----------------------------+
 
 Once the job is done, the input files are moved to an `archive`

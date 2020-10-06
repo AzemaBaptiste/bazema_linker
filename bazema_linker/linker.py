@@ -69,10 +69,10 @@ class Linker:
         FileWriter(self._output_folder).write_result(df_result)
 
         # Once everything is OK, move date files to archive
-        # reader_drugs.move_file_archive()
-        # reader_clinical_trials.move_file_archive()
-        # reader_pubmed_csv.move_file_archive()
-        # reader_pubmed_json.move_file_archive()
+        reader_drugs.move_file_archive()
+        reader_clinical_trials.move_file_archive()
+        reader_pubmed_csv.move_file_archive()
+        reader_pubmed_json.move_file_archive()
 
         return df_result
 
