@@ -9,7 +9,7 @@ FROM
     -- compute ventes_meuble by client_id
     JOIN
         (SELECT
-            SUM(prod_price) AS ventes_meuble,
+            SUM(prod_price * prod_qty) AS ventes_meuble,
             client_id AS client_id_meuble
         FROM
             TRANSACTION t INNER JOIN product_nomenclature
@@ -24,7 +24,7 @@ FROM
     -- compute ventes_deco by client_id
     JOIN
         (SELECT
-            SUM(prod_price) AS ventes_deco,
+            SUM(prod_price * prod_qty) AS ventes_deco,
             client_id AS client_id_deco
         FROM
             TRANSACTION t INNER JOIN product_nomenclature
