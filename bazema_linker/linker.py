@@ -93,27 +93,27 @@ class LinkerUtils:
 
     @staticmethod
     def extract_items_matching(item: str, list_infos: List[Tuple[Any, ...]]) -> list:
-        """TODO"""
+        """Extract matching item from tuple"""
         return list(filter(None, [infos if infos[0].lower().find(item.lower()) >= 0 else None for infos in list_infos]))
 
     def extract_publications_for_drug(self, drug: str,
                                       publications: List[Tuple[Any, ...]]) -> List[Dict[str, datetime]]:
-        """TODO"""
+        """Extract all publications related to a drug"""
         matching_publications = self.extract_items_matching(drug, publications)
         return [{'title': publication[0], 'date': self.parse_date(publication[1])}
                 for publication in matching_publications]
 
     def extract_journals_for_drug(self, item, journals):
-        """TODO"""
+        """Extract all journals related to a drug"""
         matching_journals = self.extract_items_matching(item, journals)
         return [{'journal': journal[2], 'date': self.parse_date(journal[1])} for journal in matching_journals]
 
     def get_publication_infos(self, df_drugs: DataFrame, df_publications: DataFrame):
-        """TODO"""
+        """Compute linking between drugs and publications"""
         tuple_trials = list(zip(df_publications.title, df_publications.date))
         return [self.extract_publications_for_drug(drug, tuple_trials) for drug in df_drugs.drug]
 
     def get_journal_infos(self, df_drugs: DataFrame, df_publications: DataFrame):
-        """TODO"""
+        """Compute linking between drugs and journals"""
         tuple_trials = list(zip(df_publications.title, df_publications.date, df_publications.journal))
         return [self.extract_journals_for_drug(drug, tuple_trials) for drug in df_drugs.drug]
